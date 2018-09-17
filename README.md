@@ -785,7 +785,7 @@ A tiny component that is used inside [Footer](#footer) to display the date and t
 
 This is basically of interest during the active stage of site development as it is sometimes useful to be sure that what you see on the screen is actually an updated version and not the one from cache. Therefore this component is only visible when the `REACT_APP_DEBUG_MODE` environment variable is set to 'true'.
 
-Technically, to get that timestamp available at run time I wrote a [script](https://github.com/heroqu/react-i18n-site/blob/master/timestamp-the-build.js) that can be run before each build (see `scripts` inside [package.json](https://github.com/heroqu/react-i18n-site/blob/master/package.json)) to insert the `REACT_APP_BUILD_TIMESTAMP` var assigned with current timestamp value into `.env.local` file. This variable then becomes accessible at application runtime just like all the other variables from all the `.env` files – see [config.js](https://github.com/heroqu/react-i18n-site/blob/master/src/config.js) module which makes it happen.
+Technically, to get that timestamp available at run time I wrote a [script](https://github.com/heroqu/react-i18n-site/blob/master/timestamp-the-build.js) that can be run before each build (see `scripts` inside [package.json](https://github.com/heroqu/react-i18n-site/blob/master/package.json)) to insert the `REACT_APP_BUILD_TIMESTAMP` var assigned with current timestamp value into `.env.production` file. This variable then becomes accessible at application runtime just like all the other variables from all the `.env` files – see [config.js](https://github.com/heroqu/react-i18n-site/blob/master/src/config.js) module which makes it happen.
 
 ## React components embedded in content pages
 
@@ -948,7 +948,7 @@ Visually the page area of this component is divided into two panels, with `Proje
 
 __Data loading__
 
-Projects data has to be loaded from some external data source. Currently it is  `/public.data/projects.json` file (served as static asset by site's HTTP server), but it can just as easily be a collection from MongoDB or whatever (actually, I was using MongoDB for projects data until recently, when I switched to a json file for this site).
+Projects data has to be loaded from some external data source. Currently it is  `/public/data/projects.json` file (served as static asset by site's HTTP server), but it can just as easily be a collection from MongoDB or whatever (actually, I was using MongoDB for projects data until recently, when I switched to a json file for this site).
 
 The loading starts from inside `ComponentDidMount`, the data then undergoes some processing for the purpose of renumbering, sorting, adding computed fileds and tags extraction, to finally end up in the component's state as two arrays `{ tags, projects }`, where `tags` is the list of all tags ever used inside projects, and the `projects` is the list of objects, each of which stands for individual project and looks similar to this:
 
